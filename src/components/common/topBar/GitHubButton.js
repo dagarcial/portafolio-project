@@ -29,7 +29,7 @@ const GitHubButton = () => {
   const iconSize = theme.spacing.base;
   return (
     <GitHubLink
-      href="https://github.com/dagarcial/portfolio-project"
+      href="https://github.com/dagarcial/portafolio-project"
       target="_blank"
       rel="noopener noreferrer"
     >
