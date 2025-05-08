@@ -11,7 +11,7 @@ It will include personal projects.
 * **React**
 * **styled-components**
 * **JavaScript**
-* **GitHub** for version control and deployment (via Vercel)
+* **GitHub** for version control and deployment (via Github actions)
 
 ## 📁 Project Structure
 
