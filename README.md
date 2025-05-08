@@ -1,3 +1,5 @@
+[![CI Status](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml/badge.svg)](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml)
+
 # Portfolio Project
 
 Welcome to my portfolio! This project showcases my work and experience. 
