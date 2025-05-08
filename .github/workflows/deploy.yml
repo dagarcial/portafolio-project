@@ -31,17 +31,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Link to Vercel project
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_NAME: ${{ secrets.VERCEL_PROJECT_NAME }}
-        run: |
-          npm install -g vercel
-          vercel link --token=$VERCEL_TOKEN --scope $VERCEL_ORG_ID --project $VERCEL_PROJECT_NAME --yes
-
       - name: Deploy to Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          vercel --token=$VERCEL_TOKEN --prod --yes
+        run: npx vercel --prod --token $VERCEL_TOKEN
