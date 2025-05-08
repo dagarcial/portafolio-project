@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { PiProjectorScreenChart } from "react-icons/pi";
 import ProjectBox from "@components/tabs/project/ProjectBox";
 import UnderConstruction from "@components/tabs/project/UnderConstruction";
 
@@ -25,7 +24,7 @@ const Grid = styled.div`
 // Main Component
 const Projects = () => {
   const projects = [
-    //{name:'Text',icon:PiProjectorScreenChart,description:'description',path:'api?'}
+    //{name:'Text',icon:'Icon',description:'description'}
   ];
 
   return (
