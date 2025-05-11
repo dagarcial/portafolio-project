@@ -1,4 +1,8 @@
-[![CI Status](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml/badge.svg)](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml)
+## CI Status
+
+[![Lint](https://github.com/dagarcial/portafolio-project/actions/workflows/ci.yml/badge.svg?branch=badges-and-workflow-split&job=lint)](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml)
+[![Build](https://github.com/dagarcial/portafolio-project/actions/workflows/ci.yml/badge.svg?branch=badges-and-workflow-split&job=build)](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/dagarcial/portafolio-project/actions/workflows/ci.yml/badge.svg?branch=badges-and-workflow-split&job=deploy)](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml)
 
 # Portfolio Project
 
