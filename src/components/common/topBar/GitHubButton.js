@@ -21,6 +21,9 @@ const GitHubLink = styled.a`
     background-color: ${({ theme }) => theme.colors.primary};
     transform: translateY(-3px);
   }
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}) {
+    background-color: ${({ theme }) => theme.colors.primary}
+  }
 `;
 
 // Main Component

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import NavigationButton from "@components/common/topBar/NavigationButton";
+import NavigationButton from "@/components/common/topBar/NavigationButtonHorizontal";
 import GitHubButton from "@components/common/topBar/GitHubButton";
 
 // Styled Components definitions

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import NavigationButton from "@components/common/topBar/NavigationButton";
+import NavigationButton from "@/components/common/topBar/NavigationButtonCollapsible";
 import GitHubButton from "@components/common/topBar/GitHubButton";
 
 // Styled Components definitions
@@ -35,26 +35,32 @@ const Line = styled.div.withConfig({
   }
 `;
 const ScrollableMenu = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "isActive"
+  shouldForwardProp: (prop) => prop !== "isActive" && prop !== "scrolled"
 })`
-  position: absolute;
-  top: 100%;
+  display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
+  flex-direction: column;
+  position: fixed;
+  top: ${({ theme }) => theme.spacing.xxl};
   right: 0;
-  width: fit-content;
-  height: fit-content;
-  overflow-y: auto;
+  width: 50%;
   gap: ${({ theme }) => theme.spacing.base};
-  padding: ${({ theme }) => theme.spacing.base};
+  padding: ${({ theme }) => theme.spacing.xl};
   background-color: ${({ theme }) => theme.colors.background};
-  backdrop-filter: blur(${({ theme }) => theme.spacing.xs});
   box-shadow: ${({ theme }) => theme.shadows.bottom};
-  display: ${({ isActive }) => (isActive ? 'block' : 'none')};
+`;
+const GitHubButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
 `;
 
-const NavigationMenuCollapsible = ({ handleTabChange, tabs }) => {
-  const [isMenuOpen, setMenuOpen] = useState(false);
+const NavigationMenuCollapsible = ({ activeTab, handleTabChange, tabs, scrolled, isMenuOpen, setMenuOpen }) => {
   const handleToggleMenu = () => setMenuOpen((prev) => !prev);
-
+  const handleButtonClick = (key) => {
+    handleTabChange(key);
+    setMenuOpen(false); // Close menu on selection
+  };
+  
   return (
     <MenuContainer>
       <MenuToggle onClick={handleToggleMenu}>
@@ -62,17 +68,19 @@ const NavigationMenuCollapsible = ({ handleTabChange, tabs }) => {
         <Line isActive={isMenuOpen} />
         <Line isActive={isMenuOpen} />
       </MenuToggle>
-      <ScrollableMenu isActive={isMenuOpen}>
+      <ScrollableMenu isActive={isMenuOpen} scrolled={scrolled} >
         {Object.entries(tabs).map(([key,tab],index)  => (
           <NavigationButton
             key={index}
             Icon={tab.icon}
             text={key}
-            onClick={() => handleTabChange(key)}
-            isActive={false}
+            onClick={() => handleButtonClick(key)}
+            isActive={activeTab === key}
           />
         ))}
-        <GitHubButton />
+        <GitHubButtonContainer>
+          <GitHubButton />
+        </GitHubButtonContainer>
       </ScrollableMenu>
     </MenuContainer>
   );

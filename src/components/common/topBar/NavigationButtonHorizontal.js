@@ -73,7 +73,6 @@ const NavigationButton = ({ Icon, text, onClick, isActive }) => {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      data-active={isActive}
       isActive={isActive}
     >
       <IconButton>
