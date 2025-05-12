@@ -1,4 +1,6 @@
-[![CI Status](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml/badge.svg)](https://github.com/dagarcial/portafolio-project/actions/workflows/deploy.yml)
+## CI Status
+
+[![CI + Deploy to Vercel](https://github.com/dagarcial/portafolio-project/actions/workflows/CI.yml/badge.svg)](https://github.com/dagarcial/portafolio-project/actions/workflows/CI.yml)
 
 # Portfolio Project
 
