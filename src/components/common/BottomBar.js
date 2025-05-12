@@ -19,6 +19,17 @@ const Panel = styled.div`
   padding: ${({ theme }) => theme.spacing.base};
   font-size: ${({ theme }) => theme.spacing.base};
   color: ${({ theme }) => theme.colors.background};
+  &.spacer {
+    @media (max-width: ${({ theme }) => theme.breakpoints.medium}) {
+      display: none;
+    }
+  }
+  &.copyright,
+  &.icons {
+    @media (max-width: ${({ theme }) => theme.breakpoints.medium}) {
+      flex: 1 1 50%;
+    }
+  }
 `;
 const Icons = styled.div`
   display: flex;
@@ -47,9 +58,9 @@ const BottomBar = () => {
 
   return (
     <BottomBarStyle>
-      <Panel></Panel>
-      <Panel>Copyright © {year}</Panel>
-      <Panel>
+      <Panel className="spacer" />
+      <Panel className="copyright">Copyright © {year}</Panel>
+      <Panel className="icons">
         <Icons>
           {listLinks.map((item, index) => (
             <a key={index} href={item.link} target="_blank" rel="noopener noreferrer">

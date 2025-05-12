@@ -7,7 +7,7 @@ import NavigationMenuHorizontal from "@components/common/topBar/NavigationMenuHo
 
 // Styled Components definitions
 const TopBarStyle = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== 'scrolled'})`
+  shouldForwardProp: (prop) => prop !== 'scrolled' && prop !== 'isMenuOpen'})`
   position: fixed;
   top: 0;
   width: 100%;
@@ -18,9 +18,10 @@ const TopBarStyle = styled.div.withConfig({
   z-index: 10;
   padding: 0 ${({ theme }) => theme.spacing.xl};
   transition: all 0.3s ease-out;
-  background-color: transparent;
-  backdrop-filter: ${({ scrolled, theme }) => 
-    scrolled ? `blur(${theme.spacing.xs})` : "none"};
+  background-color: ${({ isMenuOpen, theme }) =>
+    isMenuOpen ? theme.colors.background : 'transparent'};
+  backdrop-filter: ${({ scrolled, isMenuOpen, theme }) => 
+    scrolled && !isMenuOpen ? `blur(${theme.spacing.xs})` : "none"};
   box-shadow: ${({ scrolled, theme }) =>
     scrolled ? theme.shadows.bottom : "none"};
 `;
@@ -30,6 +31,7 @@ const TopBar = ({ activeTab, handleTabChange, tabs }) => {
   const theme = useTheme();
   const iconSize = theme.spacing.xl;
   const [scrolled, setScrolled] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const [isCompactView, setIsCompactView] = useState(false);
   // Catch scrolling down
   useEffect(() => {
@@ -53,12 +55,16 @@ const TopBar = ({ activeTab, handleTabChange, tabs }) => {
   }, [theme.breakpoints.medium]);
 
   return (
-    <TopBarStyle scrolled={scrolled}>
+    <TopBarStyle scrolled={scrolled} isMenuOpen={isMenuOpen}>
       <LogoIcon size={iconSize} />
       {isCompactView ? (
         <NavigationMenuCollapsible
+          activeTab={activeTab}
           handleTabChange={handleTabChange}
           tabs={tabs}
+          scrolled={scrolled}
+          isMenuOpen={isMenuOpen}
+          setMenuOpen={setMenuOpen}
         />
       ) : (
         <NavigationMenuHorizontal
