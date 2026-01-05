@@ -8,6 +8,10 @@ import { FaAws, FaGitAlt } from "react-icons/fa";
 import { SiAmazonec2, SiAmazons3, SiDocker, SiFastapi } from "react-icons/si";
 import { SiReact, SiNodedotjs, SiNextdotjs } from "react-icons/si";
 
+import OpenFOAMIcon from "@components/tabs/home/toolsTech/icons/openfoam.svg";
+import MooseIcon from "@components/tabs/home/toolsTech/icons/moose.svg";
+import SimScaleIcon from "@components/tabs/home/toolsTech/icons/simscale.svg";
+
 // Styled Components definitions
 const SectionTitle = styled.h3`
   margin-top: ${({ theme }) => theme.spacing.base};
@@ -67,6 +71,9 @@ const ToolsTech = () => {
       { label: "Plotly", icon:SiPlotly}
     ],
     'Modeling & Simulation': [
+      { label: "OpenFoam", icon:OpenFOAMIcon.src},
+      { label: "SimScale", icon:SimScaleIcon.src},
+      { label: "MOOSE", icon:MooseIcon.src},
       { label: "Ansys", icon:SiAnsys},
       { label: "Comsol", icon:SiComsol}
     ],
@@ -94,7 +101,11 @@ const ToolsTech = () => {
           <ToolsGrid>
             {value.map((val, index) => (
               <ToolItem key={index}>
-                <val.icon style={{ width: '100%', height: '100%' }}/>
+                {typeof val.icon === 'string' ? (
+                  <img src={val.icon} alt={val.label} style={{ width: '100%', filter: 'grayscale(100%)' }} />
+                ) : (
+                  <val.icon style={{ width: '100%', height: '100%' }} />
+                )}
               </ToolItem>
             ))}
           </ToolsGrid>
